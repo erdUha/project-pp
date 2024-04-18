@@ -1,0 +1,377 @@
+/* Основные стили */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f9f9f9; /* Белый цвет фона */
+}
+
+/* Стилизация шапки и навигации */
+header {
+    background-color: #f9f9f9; /* Белый цвет фона шапки */
+    color: #34495e; /* Темно-синий цвет текста */
+    padding: 20px 0;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+}
+
+#logo {
+    font-size: 2em; /* Увеличенный размер для логотипа */
+    font-weight: bold;
+}
+
+#menu {
+    list-style: none; /* Убираем стандартные точки у списка */
+    display: flex;
+    gap: 20px; /* Расстояние между элементами списка */
+    margin: 0; /* Сбрасываем отступы */
+    padding: 0; /* Сбрасываем поля */
+}
+
+#menu li a {
+    color: #34495e; /* Темно-синий цвет текста */
+    text-decoration: none; /* Убираем подчеркивание текста ссылок */
+    font-size: 1em;
+}
+
+/* Стилизация пунктов меню при наведении */
+#menu li a:hover {
+    color: #2980b9; /* Изменение цвета текста при наведении на пункт меню */
+}
+
+/* Стили для кнопки "Sign/Login" */
+.sign-login {
+    background-color: transparent; /* Прозрачный фон */
+    color: #34495e; /* Темно-синий цвет текста */
+    padding: 10px 15px;
+    border-radius: 5px; /* Скругление углов кнопки */
+    border: none; /* Убираем границу */
+}
+
+.sign-login:hover {
+    color: #2980b9; /* Изменение цвета текста при наведении */
+}
+
+/* Стили для меню входа */
+.login-menu {
+    display: flex;
+    gap: 10px;
+}
+
+.login-menu li {
+    list-style: none;
+}
+
+.login-menu li a {
+    color: white;
+    text-decoration: none;
+}
+
+.login-menu li a:hover {
+    color: #2980b9;
+}
+
+/* Стили для главного контента */
+.hero {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.hero h1 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.hero p {
+    margin-bottom: 20px;
+    font-size: 1em;
+}
+
+/* Стилизация кнопок при наведении */
+.detail-button:hover,
+
+
+/* Стилизация секции с услугами */
+.services {
+    padding: 20px 10%;
+}
+
+.services h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 2em;
+}
+
+
+/* Стилизация футера */
+footer {
+    background-color: #f9f9f9; /* Белый цвет фона футера */
+    color: #34495e; /* Темно-синий цвет текста */
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Стили для модального окна */
+.modal {
+    display: none; /* По умолчанию модальное окно скрыто */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5); /* Черный полупрозрачный фон */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* Отступ сверху и снизу */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 25%; /* Ширина модального окна (уменьшено на 5%) */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Дополнительные стили для формы входа */
+.modal-content h2 {
+    color: #34495e; /* Темно-синий цвет текста */
+    margin-bottom: 20px;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content label {
+    color: #34495e; /* Темно-синий цвет текста */
+    margin-bottom: 10px;
+}
+
+.modal-content input {
+    padding: 8px; /* Уменьшение отступа внутри поля ввода */
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.95em; /* Уменьшенный размер шрифта на 5% */
+    width: 95%; /* Установка ширины поля ввода на 100% */
+}
+
+.login-button {
+    background-color: #3498db; /* Красный цвет фона кнопки входа */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px; /* Скругление углов кнопки */
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.login-button:hover {
+    background-color: #2980b9; /* Изменение цвета фона при наведении на кнопку */
+}
+
+/* Дополнительные стили для секции "about" */
+.about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 80%; /* Ширина контейнера с текстом и фото */
+    margin-bottom: 20px;
+}
+
+.about-text {
+    flex: 1;
+    margin-right: 20px; /* Отступ справа от текста */
+}
+
+.about-text h2 {
+    font-size: 1.5em;
+}
+
+.about-image {
+    flex: 1;
+}
+
+.detail-button {
+    background-color: #2778ae; /* Зеленый цвет фона кнопки */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px; /* Скругление углов кнопки */
+    cursor: pointer;
+    font-size: 1em;
+    text-align: center;
+    width: 150px; /* Ширина кнопки */
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.detail-button:hover {
+    background-color: #2980b9; /* Изменение цвета фона при наведении на кнопку */
+}
+.learn-more-button {
+    background-color: #3498db; /* Синий цвет фона кнопки */
+    color: white;
+    border: none;
+    padding: 15px 30px; /* Увеличиваем отступы внутри кнопки */
+    border-radius: 8px; /* Увеличиваем скругление углов кнопки */
+    cursor: pointer;
+    font-size: 1.2em; /* Увеличиваем размер шрифта */
+    margin-top: 20px; /* Добавляем отступ сверху */
+    display: inline-block; /* Чтобы кнопка занимала только необходимое пространство */
+    text-decoration: none; /* Убираем подчеркивание текста */
+    text-align: center; /* Выравнивание текста по центру */
+    line-height: 1; /* Задаем высоту строки равную высоте кнопки */
+}
+.learn-more-button:hover {
+    background-color: #2980b9; /* Изменение цвета фона при наведении на кнопку */
+}
+
+        /* Дополнительные стили для формы регистрации */
+        .registration-button {
+            background-color: #2778ae; /* Зеленый цвет фона кнопки */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px; /* Скругление углов кнопки */
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .registration-button:hover {
+            background-color: #2980b9; /* Изменение цвета фона при наведении на кнопку */
+        }
+
+        .registration-error {
+            color: red;
+        }
+
+        .detail-button {
+            background-color: #2778ae; /* Зеленый цвет фона кнопки */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px; /* Скругление углов кнопки */
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px; /* Добавляем отступ сверху */
+        }
+
+        .detail-button:hover {
+            background-color: #2980b9; /* Изменение цвета фона при наведении на кнопку */
+        }
+
+        /* Дополнительные стили для новой кнопки */
+           /* Дополнительные стили для новой кнопки */
+           .learn-more-button {
+            background-color: #3498db; /* Синий цвет фона кнопки */
+            color: white;
+            border: none;
+            padding: 20px 0; /* Увеличиваем отступы внутри кнопки */
+            border-radius: 0; /* Убираем скругление углов кнопки */
+            cursor: pointer;
+            font-size: 1.5em; /* Увеличиваем размер шрифта */
+            margin-top: 20px; /* Добавляем отступ сверху */
+            width: calc(90% / 3 - 6px); /* Делим ширину на три и вычитаем отступы */
+            display: inline-block; /* Чтобы кнопка занимала только необходимое пространство */
+            text-decoration: none; /* Убираем подчеркивание текста */
+            text-align: center; /* Выравнивание текста по центру */
+            line-height: 1; /* Задаем высоту строки равную высоте кнопки */
+        }
+
+        .learn-more-button:hover {
+            background-color: #2980b9; /* Изменение цвета фона при наведении на кнопку */
+        }
+
+        /* Стили для блоков помощи клиенту */
+        .service {
+            background-color: #3498db; /* Голубой цвет фона */
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .service h3 {
+            margin-top: 0;
+        }
+
+        .service:hover {
+            background-color: #2980b9; /* Изменение цвета фона при наведении */
+        }
+
+        /* Стили для ряда кнопок */
+        .service-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        /* Стили для кнопок в ряду */
+        .service-button {
+            background-color: #3498db; /* Голубой цвет фона кнопки */
+            color: white;
+            border: none;
+            padding: 20px 0; /* Увеличиваем отступы внутри кнопки */
+            border-radius: 0; /* Убираем скругление углов кнопки */
+            cursor: pointer;
+            font-size: 1.5em; /* Увеличиваем размер шрифта */
+            flex: 1; /* Равномерное распределение ширины */
+        }
+
+        .service-button:hover {
+            background-color: #2980b9; /* Изменение цвета фона при наведении */
+        }
+
+        /* Устанавливаем расстояние между кнопками в ряду */
+        .service-button + .service-button {
+            margin-left: 6px;
+        }
+        .more {
+            background-color: #3498db; /* Синий цвет фона кнопки */
+            color: white;
+            border: none;
+            padding: 15px 30px; /* Увеличиваем отступы внутри кнопки */
+            border-radius: 8px; /* Увеличиваем скругление углов кнопки */
+            cursor: pointer;
+            font-size: 1.2em; /* Увеличиваем размер шрифта */
+            margin-top: 20px; /* Добавляем отступ сверху */
+            display: inline-block; /* Чтобы кнопка занимала только необходимое пространство */
+            text-decoration: none; /* Убираем подчеркивание текста */
+            text-align: center; /* Выравнивание текста по центру */
+            line-height: 1; /* Задаем высоту строки равную высоте кнопки */
+        }
+        
+        .more:hover {
+            background-color: #2980b9; /* Изменение цвета фона при наведении на кнопку */
+        }
+        

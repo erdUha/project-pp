@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Введите код</title>
+  </head>
+  <body>
+    <form id="checkcode">
+      <h1>Введите код</h1><br>
+      <input id="code" type="text"/><br>
+      <input type="submit" value="Check code"/>
+    </form>
+    <script type="text/javascript">
+        async function CheckCode () {
+            event.preventDefault();
+            const code = document.getElementById("code").value;
+            const body = {
+                "code": code
+            }
+            await fetch('/api/checkcode', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                body: JSON.stringify(body)
+            })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.status === 3) {
+                        window.location.href = result.redirect;
+                        return;
+                    }
+                    if (result.status === 0) {
+                        window.location.href = "/recover";
+                        return;
+                    }
+                    alert(result.message);
+                });
+        }
+        const checkCodeForm = document.getElementById("checkcode");
+        checkCodeForm.addEventListener("submit", CheckCode);
+    </script>
+  </body>
+</html>

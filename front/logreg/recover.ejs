@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Изменение пароля</title>
+  </head>
+  <body>
+    <form id="recover">
+      <h1>Изменение пароля</h1><br>
+      <h3>Новый пароль</h3>
+      <input id="password1" type="password"/><br>
+      <h3>Повторите пароль</h3>
+      <input id="password2" type="password"/><br><br>
+      <input type="submit" value="Change password"/>
+    </form>
+  </body>
+  <script type="text/javascript">
+    async function RecoverPassword () {
+        event.preventDefault();
+        const password1 = document.getElementById("password1").value;
+        const password2 = document.getElementById("password2").value;
+        const body = {
+            "password1": password1,
+            "password2": password2
+        }
+        await fetch('/api/recover', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(body)
+        })
+            .then(response => response.json())
+            .then(result => {
+                if (result.status === 3) {
+                    window.location.href = result.redirect;
+                    return;
+                }
+                if (result.status === 0) {
+                    window.location.href = "/";
+                    return;
+                }
+                alert(result.message);
+            });
+    }
+    const recoverForm = document.getElementById("recover");
+    recoverForm.addEventListener("submit", RecoverPassword);
+  </script>
+</html>

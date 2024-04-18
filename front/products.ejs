@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BIE.TECH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+<style>
+
+  body {
+    font-family: "Montserrat", sans-serif;
+    margin: 1rem 7rem 0rem 7rem;
+    padding: 0;
+  }
+  .navbar, .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  .navbar a, .footer a {
+    text-decoration: none;
+    color: #333;
+    padding: 8px 16px;
+  }
+  .navbar a:hover {
+    background-color: #ddd;
+  }
+  .search-and-filters {
+    display: flex;
+    padding: 10px 20px;
+  }
+  .filters {
+    display: flex;
+    margin-top: 0.6rem;
+    gap: 2rem;
+    margin-right: 1.6rem; /* Space between filters and search bar */
+  }
+  .filters select {
+    padding: 15px; /* Increased padding for larger appearance */
+    margin-bottom: 10px; /* Space between filters */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px; /* Fixed width for filters */
+  }
+  .search-bar {
+    flex-grow: 1; /* Allows search bar to fill up remaining space */
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Vertically centers the search bar contents */
+  }
+  .search-bar input[type="text"] {
+    border: 1px solid #ccc;
+    padding: 0.95rem; /* Increased padding for larger appearance */
+    width: 100%;
+     /* Space between search input and button */
+  }
+  .search-bar input[type="submit"] {
+    padding: 0.9rem 1.3rem; /* Increased padding for larger button */
+    background-color: #466DD0;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0rem 0.5rem 0.5rem 0rem;
+    cursor: pointer; /* Changes the mouse cursor to signify clickability */
+  }
+  .products {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    padding: 20px;
+  }
+  .product-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+  }
+  .product-item img {
+    max-width: 100%;
+    height: auto;
+  
+  }
+  h1{
+    font-size: 3rem;
+  }
+  a{
+font-size: 1.5rem;
+  }
+  .stroke{
+    margin: 3rem 0 2rem 0;
+    background-color: #333;
+    width: 100%;
+    height: 1px;
+  }
+  .products{
+    justify-content: center;
+    align-items: center;
+  }
+
+  footer {
+    color: #000000;
+    padding: 40px 0;
+}
+
+.footer-content {
+  display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.footer-section {
+    padding: 0.7rem;
+    flex: 1;
+}
+
+.footer-section h2 {
+    color: #000000;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.footer-section p {
+    font-size: 1rem;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+}
+.link{
+  font-size: 1rem;
+}
+.im{
+  width: 100%; /* Ширина изображения равна ширине контейнера */
+    max-height: 27rem; /* Высота изображения (можно задать фиксированную высоту) */
+    object-fit: cover;
+}
+.rek{
+  font-size: 1.04rem;
+  text-align: center;
+
+}
+img{
+  cursor: pointer;
+}
+
+.rating {
+            font-size: 2rem;
+            color: gray;
+            cursor: pointer;
+        }
+
+        .rating .star {
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+        
+.product-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-item:hover {
+    transform: scale(1.05);
+}
+
+        
+</style>
+</head>
+<body>
+<header>
+    <div class="navbar">
+        <h1>BIE.TECH</h1>
+        <a href="/">Home</a>
+        <a href="/products">Products</a>
+        <a href="/contact-us">Contact Us</a>
+        <a href="<%= linkacc %>"><%= username %></a>
+      </div>
+    </header>
+<div class="search-and-filters">
+  <div class="filters">
+    <select id="company" name="company">
+        <option value="all">Компания: Все</option>
+        <option value="Samsung">Samsung</option>
+        <option value="Xiaomi">Xiaomi</option>
+        <option value="LG">LG</option>
+        <option value="Huawei">Huawei</option>
+        <option value="Tefal">Tefal</option>
+        <option value="Bosh">Bosch</option>
+        <option value="Kaiser">Kaiser</option>
+    </select>
+
+    <select id="product" name="product">
+        <option value="all">Товар: Все</option>
+        <option value="Пылесосы">Пылесосы</option>
+        <option value="Утюги">Утюги</option>
+        <option value="Чайники">Чайники</option>
+        <option value="Посудомойки">Посудомойки</option>
+        <option value="Духовка">Духовки</option>
+        <option value="Холодильники">Холодильники</option>
+        <option value="Микроволновки">Микроволновки</option>
+    </select>
+</div>
+  
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search...">
+    <input type="submit" id="searchButton" value="Go">
+  </div>
+</div>
+<div class="stroke"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const companySelect = document.getElementById('company');
+      const productSelect = document.getElementById('product');
+      const productItems = document.querySelectorAll('.product-item');
+
+      function handleFilters() {
+          const selectedCompany = companySelect.value;
+          const selectedProduct = productSelect.value;
+
+          productItems.forEach(item => {
+              const itemCompany = item.getAttribute('data-company');
+              const itemProduct = item.getAttribute('data-product');
+
+              const companyMatch = selectedCompany === 'all' || selectedCompany === itemCompany;
+              const productMatch = selectedProduct === 'all' || selectedProduct === itemProduct;
+
+              if (companyMatch && productMatch) {
+                  item.style.display = 'block'; // Показываем товар
+              } else {
+                  item.style.display = 'none'; // Скрываем товар
+              }
+          });
+      }
+
+      companySelect.addEventListener('change', handleFilters);
+      productSelect.addEventListener('change', handleFilters);
+  });
+  
+  $(document).ready(function() {
+    $('.product-item').hover(
+        function() {
+            // Код, который выполняется при наведении
+            $(this).css('background-color', '#f2f2f2');
+        },
+        function() {
+            // Код, который выполняется при уходе курсора с элемента
+            $(this).css('background-color', 'transparent'); 
+    );
+});
+
+</script>
+<main>
+<div id="products" class="products">
+    <!-- Repeat this block for each product -->
+    <div class="product-item" data-company="Samsung" data-product="Пылесосы">
+      <img class="im" src="https://s13emagst.akamaized.net/products/882/881948/images/res_8524260a4b95980a5a32ce0c8bb55d83.jpg" alt="Product Image">
+      <p>Пылесос Samsung S22 Ultra</p>
+      <div class="product" data-product-id="1">
+        <div class="rating" data-rating="0">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+    </div>
+      <a href="product-link.pdf" download>Download PDF</a>
+    </div>
+    
+    <div class="product-item" data-company="Xiaomi" data-product="Пылесосы">
+        <img class="im" src="https://mi92.ru/wp-content/uploads/2018/04/robot-pyilesos-xiaomi-mi-robot-vacuum-belyiy-2.jpg" alt="Product Image">
+        <p>Пылесос Xiaomi PocoX20</p>
+        <div class="product" data-product-id="2">
+          <div class="rating" data-rating="0">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+          </div>
+      </div>
+        <a href="product-link.pdf" download>Download PDF</a>
+      </div>
+
+      <div class="product-item" data-company="Xiaomi" data-product="Утюги">
+        <img class="im" src="https://mc-store.ru/image/cache/catalog/product/parovoj-utyug-xiaomi-flexwarm-nano-steam-professional-small-iron-pink-2-800x800.jpg" alt="Product Image">
+        <p>Утюг Xiaomi Iron D400</p>
+        <div class="product" data-product-id="3">
+          <div class="rating" data-rating="0">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+          </div>
+      </div>
+        <a href="product-link.pdf" download>Download PDF</a>
+      </div>
+      <div class="product-item" data-company="Samsung" data-product="Холодильники">
+        <img class="im" src="https://idei.club/raznoe/uploads/posts/2023-05/thumbs/1684977694_idei-club-p-kholodilnik-samsung-so-steklyannim-fasadom-75.jpg" alt="Product Image">
+        <p>Холодильник Samsung Galaxy_GL_0553</p>
+        <div class="product" data-product-id="4">
+          <div class="rating" data-rating="0">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+          </div>
+      </div>
+        <a href="product-link.pdf" download>Download PDF</a>
+      </div>
+
+      <div class="product-item" data-company="LG" data-product="Холодильники">
+        <img class="im" src="https://umall.kz/upload/iblock/061/061200d9b0aff0b1aec94a54442a0f91.jpg" alt="Product Image">
+        <p>Холодильник LG Pro</p>
+        <div class="product" data-product-id="5">
+          <div class="rating" data-rating="0">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+          </div>
+      </div>
+        <a href="product-link.pdf" download>Download PDF</a>
+      </div>
+  
+  
+  
+    <div class="product-item" data-company="Tefal" data-product="Чайники">
+      <img class="im" src="https://foxmag.biz/image/cache/catalog/tech_kitchen/make_drink/electric_kettle/img/6337409-0-1200x1200.jpg" alt="Product Image">
+      <p>Чайник Tefal Family-001</p>
+      <div class="product" data-product-id="6">
+        <div class="rating" data-rating="5">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+    </div>
+      <a href="product-link.pdf" download>Download PDF</a>
+    </div>
+    
+    <div class="product-item" data-company="Xiaomi" data-product="Чайники">
+        <img class="im" src="https://avatars.mds.yandex.net/i?id=1a14ad03905d1d891469eb74d603dd5df54967aa-4589919-images-thumbs&n=13" alt="Product Image">
+        <p>Чайник Xiaomi 12 Lite</p>
+        <div class="product" data-product-id="7">
+          <div class="rating" data-rating="0">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+          </div>
+      </div>
+        <a href="product-link.pdf" download>Download PDF</a>
+      </div>
+
+      <div class="product-item" data-company="Bosch" data-product="Микроволновки">
+        <img class="im" src="https://preview.free3d.com/img/2019/08/2145918683300496803/ceouy3eq.jpg" alt="Product Image">
+        <p>Микроволновка Bosch G121</p>
+        <div class="product" data-product-id="8">
+          <div class="rating" data-rating="0">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+          </div>
+      </div>
+        <a href="product-link.pdf" download>Download PDF</a>
+      </div>
+      <div class="product-item" data-company="Bosch" data-product="Духовка">
+        <img class="im" src="https://cdn.kitchenmania.ru/iblock/58/82/product_image_3982_38478.jpg" alt="Product Image">
+        <p>Духовка Bosch S23G</p>
+        <div class="product" data-product-id="9">
+          <div class="rating" data-rating="0">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+          </div>
+      </div>
+        <a href="product-link.pdf" download>Download PDF</a>
+      </div>
+
+      <div class="produc">
+        <img src="https://avatars.mds.yandex.net/i?id=179e4854020434a544b88481edc678e966e5ac0e-8750921-images-thumbs&n=13" alt="">
+        <p class="rek">НЕреальные скидки на первый заказ!
+          Успей приобрести товар мечты!
+        </p>
+      </div>
+  
+    <div class="product-item" data-company="Xiaomi" data-product="Посудомойки">
+      <img class="im" src="https://avatars.mds.yandex.net/i?id=5f33bf91e0f73647babdc9a962646b610ee6097b-9838181-images-thumbs&n=13" alt="Product Image">
+      <p>Посудомойка Xiaomi Moika</p>
+      <div class="product" data-product-id="10">
+        <div class="rating" data-rating="0">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+    </div>
+      <a href="product-link.pdf" download>Download PDF</a>
+    </div>
+    
+    <div class="product-item" data-company="Samsung" data-product="Посудомойки">
+        <img class="im" src="https://avatars.mds.yandex.net/i?id=5a9e62f4605ab26dc8b119a24ef932fe805e34f7-9035616-images-thumbs&n=13" alt="Product Image">
+        <p>Посудомойка Samsung Vasta-4</p>
+        <div class="product" data-product-id="11">
+          <div class="rating" data-rating="0">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+          </div>
+      </div>
+        <a href="product-link.pdf" download>Download PDF</a>
+      </div>
+
+      <div class="product-item" data-company="Bosch" data-product="Утюги">
+        <img class="im" src="https://avatars.mds.yandex.net/i?id=c8e7d9f28254d3ec420a1b3968ba2fb4-3884575-images-thumbs&n=13" alt="Product Image">
+        <p>Утюг Bosch IDB-44</p>
+        <div class="product" data-product-id="12">
+          <div class="rating" data-rating="0">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+          </div>
+      </div>
+        <a href="product-link.pdf" download>Download PDF</a>
+      </div>
+      <div class="product-item" data-company="LG" data-product="Утюги">
+        <img class="im" src="https://avatars.mds.yandex.net/i?id=9a40f1b5e135a921cfa04fb41ede1477b22374bc-9100543-images-thumbs&n=13" alt="Product Image">
+        <p>Утюг LG 9S</p>
+        <div class="product" data-product-id="13">
+          <div class="rating" data-rating="0">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+          </div>
+      </div>
+        <a href="product-link.pdf" download>Download PDF</a>
+      </div>
+
+      <div class="product-item" data-company="Kaiser" data-product="Посудомойки">
+        <img class="im" src="https://чёпочём.com/upload/resize_cache/iblock/9f5/1000_1000_178943735f710a67875c49e544806aeb8/9f50968ba45d0ec847873084219f0d62.jpg" alt="Product Image">
+        <p>Посудомойка Kaiser Old-day</p>
+        <div class="product" data-product-id="14">
+          <div class="rating" data-rating="0">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+          </div>
+      </div>
+        <a href="product-link.pdf" download>Download PDF</a>
+      </div>
+  
+    <div class="product-item" data-company="LG" data-product="Духовки">
+      <img class="im" src="https://magazun.com/images/detailed/739/16_585f60b7-bc9d-11ec-a280-7085c2a4485b.jpg" alt="Product Image">
+      <p>Духовка LG Liar-B</p>
+      <div class="product" data-product-id="15">
+        <div class="rating" data-rating="0">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+    </div>
+      <a href="product-link.pdf" download>Download PDF</a>
+    </div>
+    
+    <div class="product-item" data-company="Samsung" data-product="Чайники">
+        <img class="im" src="https://bt24.kz/images/detailed/7/Galaxy_GL_0553.jpg" alt="Product Image">
+        <p>Чайник Samsung G-3</p>
+        <div class="product" data-product-id="16">
+          <div class="rating" data-rating="0">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+          </div>
+      </div>
+        <a href="product-link.pdf" download>Download PDF</a>
+      </div>
+
+      <div class="product-item" data-company="Kaiser" data-product="Чайники">
+        <img class="im" src="https://avatars.mds.yandex.net/i?id=473dc90db5f5888b1e8d20de15cd64b829371758-12387244-images-thumbs&n=13" alt="Product Image">
+        <p>Чайник Kaiser OOh Da</p>
+        <div class="product" data-product-id="17">
+          <div class="rating" data-rating="0">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+          </div>
+      </div>
+        <a href="product-link.pdf" download>Download PDF</a>
+      </div>
+      <div class="product-item" data-company="Kaiser" data-product="Микроволновки">
+        <img class="im" src="https://avatars.mds.yandex.net/i?id=94d856b5fe08178ae32aede96f11fce0-4375647-images-thumbs&n=13" alt="Product Image">
+        <p>Микроволновка Kaiser Old Money</p>
+        <div class="product" data-product-id="18">
+          <div class="rating" data-rating="0">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+          </div>
+      </div>
+        <a href="product-link.pdf" download>Download PDF</a>
+      </div>
+
+      <div class="product-item" data-company="Kaiser" data-product="Посудомойки">
+        <img class="im" src="https://чёпочём.com/upload/resize_cache/iblock/9f5/1000_1000_178943735f710a67875c49e544806aeb8/9f50968ba45d0ec847873084219f0d62.jpg" alt="Product Image">
+        <p>Посудомойка Kaiser Karkat</p>
+        <div class="product" data-product-id="19">
+          <div class="rating" data-rating="0">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+          </div>
+      </div>
+        <a href="product-link.pdf" download>Download PDF</a>
+      </div>
+ 
+  </div>
+</main>
+<div class="stroke"></div>
+<footer>
+  <div class="footer-content">
+      <div class="footer-section about">
+          <h2>О нас</h2>
+          <p>Мы предоставляем возможность скачивания руководств по использованию товаров из разных компаний бытовых технологий.</p>
+      </div>
+      <div class="footer-section links">
+          <h2>Ссылки</h2>
+          <ul>
+              <li><a class="link" href="#">Главная</a></li>
+              <li><a class="link" href="#">О нас</a></li>
+              <li><a class="link" href="#">Контакты</a></li>
+          </ul>
+      </div>
+      <div class="footer-section contact">
+          <h2>Контакты</h2>
+          <p>Адрес: Кабанбай Батыра 60А/8<br> Телефон: +7 778 833 0311<br> Email: nokapo740@gmail.com</p>
+      </div>
+  </div>
+  <div class="footer-bottom">
+      &copy; 2024 BIE.TECH | Все права защищены
+  </div>
+</footer>
+
+<script>
+ document.addEventListener('DOMContentLoaded', function() {
+        const ratings = document.querySelectorAll('.rating');
+
+        ratings.forEach(ratingContainer => {
+            const stars = ratingContainer.querySelectorAll('.star');
+
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    const rating = parseInt(this.getAttribute('data-value'));
+                    const currentRating = parseInt(ratingContainer.getAttribute('data-rating'));
+
+                    if (rating !== currentRating) {
+                        ratingContainer.setAttribute('data-rating', rating);
+
+                        stars.forEach((s, index) => {
+                            if (index < rating) {
+                                s.style.color = 'blue'; // Окрашиваем звезды до текущей оценки в золотой цвет
+                            } else {
+                                s.style.color = 'gray'; // Окрашиваем остальные звезды в серый цвет
+                            }
+                        });
+
+                        const productId = ratingContainer.parentNode.getAttribute('data-product-id');
+                        console.log('Оценка товара ' + productId + ': ' + rating);
+                    }
+                });
+            });
+        });
+    });
+
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const productItems = document.querySelectorAll('.product-item');
+
+        function handleSearch() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+
+            productItems.forEach(item => {
+                const productName = item.querySelector('p').textContent.toLowerCase();
+
+                if (productName.includes(searchTerm)) {
+                    item.style.display = 'block'; 
+                } else {
+                    item.style.display = 'none'; 
+                }
+            });
+        }
+
+        searchButton.addEventListener('click', handleSearch);
+    });
+</script>
+<template id="temp">
+    <div class="product-item" data-company="" data-product="">
+      <img class="im" src="" alt="Product Image">
+      <p></p>
+      <div class="product" data-product-id="">
+        <div class="rating" data-rating="0">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+      </div>
+      <a href="">View / Download PDF</a>
+    </div>
+</template>
+<script>
+    const products = document.getElementById("products");
+    const template = document.getElementById("temp");
+    
+    fetch('/api/getproducts')
+        .then(response => response.json())
+        .then(result => {
+            result.forEach(item => {
+                const tempClone = template.cloneNode(true);
+                const productItem = tempClone.content.querySelector('.product-item');
+                const image = tempClone.content.querySelector('.im');
+                const productId = tempClone.content.querySelector('.product');
+                const theA = tempClone.content.querySelector('a');
+                const name = tempClone.content.querySelector('p');
+                name.innerHTML = item.name;
+                image.src = item.imgurl;
+                productId.dataset.productId = item.id;
+                theA.href = '/product/' + item.id;
+                productItem.dataset.company = item.company;
+                productItem.dataset.product = item.product;
+                products.appendChild(productItem.cloneNode(true));
+                console.log(item);
+            });
+        });
+</script>
+</body>
+</html>

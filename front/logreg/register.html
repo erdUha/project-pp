@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Регистрация. BIE.TECH</title>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap' />
+  <link rel="stylesheet" href="/static/styles/reg.css?bruh=13514536235252454523625672456235623456734567235624675436724562465724567345624573567245623457456746" />
+</head>
+<body>
+<div onclick="window.location.href = '/'" id="exit">
+    <img src="/static/svg/home.svg" />
+</div>
+<form onsubmit="Register()">
+<div class="screen-1">
+    <svg class="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="300" height="10" viewbox="0 0 640 480" xml:space="preserve">
+    </svg>
+      <div id="username-bad" class="login">
+        <label for="login">Username</label>
+        <div class="sec-2">
+          <ion-icon name="person-outline"></ion-icon>
+          <input onfocus="handleBadClick()" id="username" type="text" name="login" placeholder="vl"/>
+        </div>
+      </div>
+      <div id="email-bad" class="email">
+        <label for="email">Email Address</label>
+        <div class="sec-2">
+          <ion-icon name="mail-outline"></ion-icon>
+          <input onfocus="handleBadClick()" id="email" type="email" name="email" placeholder="ebi@gmail.com"/>
+        </div>
+      </div>
+      <div id="password-bad" class="password">
+        <label for="password">Password</label>
+        <div class="sec-2">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <input onfocus="handleBadClick()" id="password" class="pas" type="password" name="password" placeholder="············"/>
+          <ion-icon class="show-hide" name="eye-outline"></ion-icon>
+        </div>
+      </div>
+      <input type="submit" class="register" value="Register" />
+  <div class="footer"><span><a href="/login">Login</a></span></div>
+</div>
+</form>
+<div id="loadingg">
+    <div id="loadeerr"></div>
+</div>
+<!-- partial -->
+<script>
+    const loader = document.getElementById('loadingg');
+    let isLoading = false;
+    async function Register() {
+        event.preventDefault();
+        loader.classList.add('is-loading');
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const usernameBad = document.getElementById('username-bad');
+        const emailBad = document.getElementById('email-bad');
+        const passwordBad = document.getElementById('password-bad');
+        const body = {
+            "username": username,
+            "email": email,
+            "password": password
+        }
+        const response = await fetch('/api/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(body)
+        })
+            .then(response => response.json())
+            .then(result => {
+                if (result.status === 3) {
+                    window.location.href = result.redirect;
+                }
+                if (result.status === 0) {
+                    window.location.href = "/login";
+                }
+                if (result.status === 1) {
+                    if (result.bad === 'username') {
+                        usernameBad.classList.add('bad');
+                        console.log(usernameBad.classList)
+                    }
+                    if (result.bad === 'email') {
+                        emailBad.classList.add('bad');
+                    }
+                    if (result.bad === 'password') {
+                        passwordBad.classList.add('bad');
+                    }
+                }
+                loader.classList.remove('is-loading');
+                alert(result.message);
+            })
+            .catch(() => {
+                loader.classList.remove('is-loading');
+                console.log('Ошибка, попробуте позже')
+            });
+    }
+    function handleBadClick() {
+        const bads = document.getElementsByClassName('bad');
+        for (let i=0; i<bads.length; i++) {
+            bads[i].classList.remove('bad');
+        };
+    }</script>
+</body>
+</html>

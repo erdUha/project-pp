@@ -1,0 +1,241 @@
+* {
+    font-family: "Poppins";
+    margin: 0; /* Убираем отступы по умолчанию */
+    padding: 0; /* Убираем отступы по умолчанию */
+    box-sizing: border-box; /* Устанавливаем значение box-sizing для корректного расчета размеров */
+}
+
+body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow-y: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #dde5f4;
+    height: 100vh;
+    margin: 0; /* Убираем отступы по умолчанию */
+}
+
+input::placeholder {
+    opacity: 0.5; /* Firefox */ 
+}
+
+.screen-1 {
+    background: #f1f7fe;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    box-shadow: 0 0 2em #e6e9f9;
+  gap: 2em;
+}
+.screen-1 .logo {
+    margin-top: -3em;   
+}
+.screen-1 .login {
+    background: white;
+    box-shadow: 0 0 2em #e6e9f9;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    border-radius: 20px;
+    color: #4d4d4d;
+}
+.screen-1 .login input {
+    outline: none;
+    border: none;
+}
+.screen-1 .login input::-moz-placeholder {
+    color: black;
+    font-size: 0.9em;
+}
+.screen-1 .login input:-ms-input-placeholder {
+    color: black;
+    font-size: 0.9em;
+}
+.screen-1 .login input::placeholder {
+    color: black;
+    font-size: 0.9em;
+}
+.screen-1 .login ion-icon {
+    color: #4d4d4d;
+    margin-bottom: -0.2em;
+}
+.screen-1 .email {
+    background: white;
+    box-shadow: 0 0 2em #e6e9f9;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    border-radius: 20px;
+    color: #4d4d4d;
+}
+.screen-1 .email input {
+    outline: none;
+    border: none;
+}
+.screen-1 .email input::-moz-placeholder {
+    color: black;
+    font-size: 0.9em;
+}
+.screen-1 .email input:-ms-input-placeholder {
+    color: black;
+    font-size: 0.9em;
+}
+.screen-1 .email input::placeholder {
+    color: black;
+    font-size: 0.9em;
+}
+.screen-1 .email ion-icon {
+    color: #4d4d4d;
+    margin-bottom: -0.2em;
+}
+.screen-1 .password {
+    background: white;
+    box-shadow: 0 0 2em #e6e9f9;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    border-radius: 20px;
+    color: #4d4d4d;
+}
+.screen-1 .password input {
+    outline: none;
+    border: none;
+}
+.screen-1 .password input::-moz-placeholder {
+    color: black;
+    font-size: 0.9em;
+}
+.screen-1 .password input:-ms-input-placeholder {
+    color: black;
+    font-size: 0.9em;
+}
+.screen-1 .password input::placeholder {
+    color: black;
+    font-size: 0.9em;
+}
+.screen-1 .password ion-icon {
+    color: #4d4d4d;
+    margin-bottom: -0.2em;
+}
+.screen-1 .password .show-hide {
+    margin-right: -5em;
+}
+.screen-1 .register {
+    padding: 1em;
+    background: #3e4684;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+}
+.screen-1 .footer {
+    display: flex;
+    font-size: 0.7em;
+    color: #5e5e5e;
+    gap: 14em;
+    padding-bottom: 1em;
+}
+.screen-1 .footer span {
+    cursor: pointer;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+}
+
+.footer {
+    display: flex;
+    font-size: 0.7em;
+    color: #5e5e5e;
+    gap: 14em;
+    padding-bottom: 1em; /* Измененный отступ снизу */
+}
+
+.footer span {
+    cursor: pointer;
+}
+
+#loadingg {
+    z-index: 999;
+    position: absolute;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 23, 0.3);
+} 
+
+#loadingg.is-loading{
+    display: flex;
+}
+
+#loadeerr {
+    width: 4rem;
+    height: 4rem;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    animation: rotate 2s linear;
+    animation-iteration-count: infinite;
+}
+#loadeerr:before {
+    content: '';
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: conic-gradient(transparent 0% 30%, white 100%);
+    -webkit-mask-image:
+        radial-gradient(
+            transparent 0,
+            transparent 1.5rem,
+            #000 1.5rem,
+            #000 2rem
+        );
+}
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.bad {
+    box-shadow: inset 0 0 0.25rem rgba(255,0,0,0.6),
+                0 0 0.75rem rgba(255,0,0,0.6) !important;
+}
+
+#exit {
+    z-index: 999;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6rem;
+    height: 6rem;
+    left: 0;
+    top: 4%;
+    background: #abc0d1;
+    border-radius: 0% 40% 40% 0%;
+    cursor: pointer;
+}
+#exit img {
+    z-index: 1000;
+    color: #000;
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-right: 0.4rem;
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Account page</title>
+    <body>
+        <h3>Username: <%= username %></h3>
+        <h3>Email: <%= email %></h3>
+        <br>
+        <button onclick="LogOut()">Выйти</button>
+        <script type='text/javascript'>
+            async function LogOut() {
+                await fetch('/api/logout');
+                window.location.href = "/";
+                console.log('should have been redirected');
+            }
+        </script>
+    </body>    
+</html>
